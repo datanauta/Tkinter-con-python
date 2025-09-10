@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>program_tkinter.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #2aacb8;}
+.s4 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+program_tkinter.py</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">tkinter </span><span class="s0">as </span><span class="s1">tk</span>
+<span class="s0">from </span><span class="s1">tkinter </span><span class="s0">import </span><span class="s1">messagebox</span>
+
+<span class="s1">users </span><span class="s2">= []</span>
+
+<span class="s0">def </span><span class="s1">add_user</span><span class="s2">():</span>
+    <span class="s1">name </span><span class="s2">= </span><span class="s1">entry</span><span class="s2">.</span><span class="s1">get</span><span class="s2">()</span>
+    <span class="s0">if </span><span class="s1">name</span><span class="s2">:</span>
+        <span class="s1">users</span><span class="s2">.</span><span class="s1">append</span><span class="s2">(</span><span class="s1">name</span><span class="s2">)</span>
+        <span class="s1">update_list</span><span class="s2">()</span>
+        <span class="s1">entry</span><span class="s2">.</span><span class="s1">delete</span><span class="s2">(</span><span class="s3">0</span><span class="s2">, </span><span class="s1">tk</span><span class="s2">.</span><span class="s1">END</span><span class="s2">)</span>
+        <span class="s1">messagebox</span><span class="s2">.</span><span class="s1">showinfo</span><span class="s2">(</span><span class="s4">&quot;Éxito&quot;</span><span class="s2">,</span><span class="s4">f&quot;Usuario </span><span class="s0">{</span><span class="s1">name</span><span class="s0">} </span><span class="s4">añadido&quot;</span><span class="s2">)</span>
+    <span class="s0">else</span><span class="s2">:</span>
+        <span class="s1">messagebox</span><span class="s2">.</span><span class="s1">showwarning</span><span class="s2">(</span><span class="s4">&quot;Atención&quot;</span><span class="s2">,</span><span class="s4">&quot;Debes escribir un nombre&quot;</span><span class="s2">)</span>
+
+<span class="s0">def </span><span class="s1">delete_user</span><span class="s2">():</span>
+    <span class="s1">name </span><span class="s2">= </span><span class="s1">entry</span><span class="s2">.</span><span class="s1">get</span><span class="s2">()</span>
+    <span class="s0">if </span><span class="s1">name </span><span class="s0">in </span><span class="s1">users</span><span class="s2">:</span>
+        <span class="s1">users</span><span class="s2">.</span><span class="s1">remove</span><span class="s2">(</span><span class="s1">name</span><span class="s2">)</span>
+        <span class="s1">update_list</span><span class="s2">()</span>
+        <span class="s1">entry</span><span class="s2">.</span><span class="s1">delete</span><span class="s2">(</span><span class="s3">0</span><span class="s2">, </span><span class="s1">tk</span><span class="s2">.</span><span class="s1">END</span><span class="s2">)</span>
+        <span class="s1">messagebox</span><span class="s2">.</span><span class="s1">showinfo</span><span class="s2">(</span><span class="s4">&quot;Éxito&quot;</span><span class="s2">,</span><span class="s4">f&quot;Usuario </span><span class="s0">{</span><span class="s1">name</span><span class="s0">} </span><span class="s4">eliminado&quot;</span><span class="s2">)</span>
+    <span class="s0">else</span><span class="s2">:</span>
+        <span class="s1">messagebox</span><span class="s2">.</span><span class="s1">showerror</span><span class="s2">(</span><span class="s4">&quot;Error&quot;</span><span class="s2">,</span><span class="s4">&quot;Ese usuario no existe&quot;</span><span class="s2">)</span>
+
+<span class="s0">def </span><span class="s1">update_list</span><span class="s2">():</span>
+    <span class="s1">listbox</span><span class="s2">.</span><span class="s1">delete</span><span class="s2">(</span><span class="s3">0</span><span class="s2">, </span><span class="s1">tk</span><span class="s2">.</span><span class="s1">END</span><span class="s2">)</span>
+    <span class="s0">for </span><span class="s1">user </span><span class="s0">in </span><span class="s1">users</span><span class="s2">:</span>
+        <span class="s1">listbox</span><span class="s2">.</span><span class="s1">insert</span><span class="s2">(</span><span class="s1">tk</span><span class="s2">.</span><span class="s1">END</span><span class="s2">, </span><span class="s1">user</span><span class="s2">)</span>
+
+<span class="s0">def </span><span class="s1">exit_app</span><span class="s2">():</span>
+    <span class="s1">root</span><span class="s2">.</span><span class="s1">destroy</span><span class="s2">()</span>
+
+<span class="s1">root </span><span class="s2">= </span><span class="s1">tk</span><span class="s2">.</span><span class="s1">Tk</span><span class="s2">()</span>
+<span class="s1">root</span><span class="s2">.</span><span class="s1">title</span><span class="s2">(</span><span class="s4">&quot;Gestor de Usuarios&quot;</span><span class="s2">)</span>
+<span class="s1">root</span><span class="s2">.</span><span class="s1">geometry</span><span class="s2">(</span><span class="s4">&quot;300x300&quot;</span><span class="s2">)</span>
+
+<span class="s1">entry </span><span class="s2">= </span><span class="s1">tk</span><span class="s2">.</span><span class="s1">Entry</span><span class="s2">(</span><span class="s1">root</span><span class="s2">)</span>
+<span class="s1">entry</span><span class="s2">.</span><span class="s1">pack</span><span class="s2">(</span><span class="s1">pady</span><span class="s2">=</span><span class="s3">5</span><span class="s2">)</span>
+
+<span class="s1">btn_add </span><span class="s2">= </span><span class="s1">tk</span><span class="s2">.</span><span class="s1">Button</span><span class="s2">(</span><span class="s1">root</span><span class="s2">, </span><span class="s1">text</span><span class="s2">=</span><span class="s4">&quot;Añadir usuario&quot;</span><span class="s2">,</span><span class="s1">command</span><span class="s2">=</span><span class="s1">add_user</span><span class="s2">)</span>
+<span class="s1">btn_add</span><span class="s2">.</span><span class="s1">pack</span><span class="s2">(</span><span class="s1">pady</span><span class="s2">=</span><span class="s3">5</span><span class="s2">)</span>
+
+<span class="s1">btn_delete </span><span class="s2">= </span><span class="s1">tk</span><span class="s2">.</span><span class="s1">Button</span><span class="s2">(</span><span class="s1">root</span><span class="s2">, </span><span class="s1">text</span><span class="s2">=</span><span class="s4">&quot;Eliminar usuario&quot;</span><span class="s2">, </span><span class="s1">command</span><span class="s2">=</span><span class="s1">delete_user</span><span class="s2">)</span>
+<span class="s1">btn_delete</span><span class="s2">.</span><span class="s1">pack</span><span class="s2">(</span><span class="s1">pady</span><span class="s2">=</span><span class="s3">5</span><span class="s2">)</span>
+
+<span class="s1">btn_exit </span><span class="s2">= </span><span class="s1">tk</span><span class="s2">.</span><span class="s1">Button</span><span class="s2">(</span><span class="s1">root</span><span class="s2">, </span><span class="s1">text</span><span class="s2">=</span><span class="s4">&quot;Salir&quot;</span><span class="s2">, </span><span class="s1">command</span><span class="s2">=</span><span class="s1">exit_app</span><span class="s2">)</span>
+<span class="s1">btn_exit</span><span class="s2">.</span><span class="s1">pack</span><span class="s2">(</span><span class="s1">pady</span><span class="s2">=</span><span class="s3">5</span><span class="s2">)</span>
+
+<span class="s1">listbox </span><span class="s2">= </span><span class="s1">tk</span><span class="s2">.</span><span class="s1">Listbox</span><span class="s2">(</span><span class="s1">root</span><span class="s2">)</span>
+<span class="s1">listbox</span><span class="s2">.</span><span class="s1">pack</span><span class="s2">(</span><span class="s1">pady</span><span class="s2">=</span><span class="s3">10</span><span class="s2">, </span><span class="s1">fill</span><span class="s2">=</span><span class="s1">tk</span><span class="s2">.</span><span class="s1">BOTH</span><span class="s2">,</span><span class="s1">expand</span><span class="s2">=</span><span class="s0">True</span><span class="s2">)</span>
+
+<span class="s1">root</span><span class="s2">.</span><span class="s1">mainloop</span><span class="s2">()</span></pre>
+</body>
+</html>
